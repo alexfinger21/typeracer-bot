@@ -11,8 +11,8 @@ CHROMEDRIVER_PATH = '/usr/local/bin/chromedriver'
 s = Service(CHROMEDRIVER_PATH)
 WINDOW_SIZE = "1920,1080"
 MIN_RACE_TEXT = 7
-WPS = 700/60
-CPS = WPS * 4.79
+WPS = 200/60
+
 LOGIN_FLAG = 0
 START_TEXT = "Go!" if LOGIN_FLAG else "The race is on!"
 
@@ -44,8 +44,9 @@ def gameMode():
             game_text = txt
             break
 
+    CPS = len(game_text) / (len(game_text.split(" ")) / WPS)
 
-    print("GAME TEXT", game_text)
+    print("GAME TEXT", game_text, CPS)
     total_text = gameView.find_element(By.XPATH, "./*").text
     while (START_TEXT not in total_text):
         total_text = gameView.find_element(By.XPATH, "./*").text
