@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from math import floor
 
 from time import sleep
 import random
@@ -12,9 +11,9 @@ CHROMEDRIVER_PATH = '/usr/local/bin/chromedriver'
 s = Service(CHROMEDRIVER_PATH)
 WINDOW_SIZE = "1920,1080"
 MIN_RACE_TEXT = 7
-WPS = 500/60
+WPS = 450/60
 
-LOGIN_FLAG = 0
+LOGIN_FLAG = 1
 START_TEXT = "Go!" if LOGIN_FLAG else "The race is on!"
 
 # Options
@@ -69,8 +68,7 @@ def gameMode():
             inp_box.send_keys(c2)
             sleep(tim)
             inp_box.send_keys(Keys.BACKSPACE)
-            tim = random.random() * 1/CPS * 2
-            sleep(tim*3)
+            sleep(tim)
 
 
         tim = None
